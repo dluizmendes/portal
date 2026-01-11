@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Douglas Mendes - SRE',
   description: 'Senior Site Reliability Engineer with 8+ years of experience in cloud-native platforms, Kubernetes, and infrastructure automation.',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/portal/favicon.svg',
   },
 }
 
