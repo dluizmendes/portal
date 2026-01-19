@@ -2,8 +2,6 @@
 
 import React, { useState, useMemo } from 'react';
 import {
-  BarChart,
-  Bar,
   LineChart,
   Line,
   PieChart,
