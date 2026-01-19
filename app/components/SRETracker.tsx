@@ -235,7 +235,7 @@ export default function SRETracker() {
   const [sortField, setSortField] = useState<SortField | null>(null);
   const [sortOrder, setSortOrder] = useState<SortOrder>(null);
   const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
-  const [selectedDashboardName, setSelectedDashboardName] = useState(0);
+  const selectedDashboardName = 0;
 
   const toggleRowExpansion = (id: number) => {
     const newExpanded = new Set(expandedRows);
