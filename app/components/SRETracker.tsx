@@ -28,7 +28,6 @@ import {
   DollarSign,
   TrendingUp,
   ChevronRight,
-  X,
   Sun,
 } from 'lucide-react';
 
