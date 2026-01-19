@@ -468,7 +468,6 @@ export default function SRETracker() {
 
           const headerLine = lines[0].replace('\uFEFF', '');
           const isAPI = headerLine.includes('Pentest Realizado');
-          const headers = headerLine.split(',').map((h: string) => h.trim());
 
           const newItems: DecommissionItem[] = [];
           let importedCount = 0;
