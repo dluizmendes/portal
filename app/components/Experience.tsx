@@ -6,10 +6,10 @@ const EXPERIENCES = [
     company: 'Itaú Unibanco',
     period: '02/2022 - Present',
     highlights: [
-      'Led SRE practices for Beyond Banking platforms (iCarros, Tags) supporting high-availability consumer-facing applications',
+      'Led SRE practices for Beyond Banking platforms (marketplace, icarros, tags) supporting high-availability consumer-facing applications',
       'Executed AWS account migration into Itaú\'s centralized cloud environment with compliance guardrails',
       'Led observability migration from Grafana to Datadog, redesigning metrics, alerts, and SLOs',
-      'Implemented FinOps strategies reducing cloud costs by R$300K+ annually',
+      'Implemented FinOps strategies reducing cloud costs by R$100K+ annually',
       'Strengthened platform resilience through load testing, capacity planning, and chaos engineering',
     ],
   },

@@ -2,11 +2,35 @@
 
 export default function Expertise() {
   const technologies = [
-    { name: 'AWS', icon: '☁️', description: 'Cloud Infrastructure' },
-    { name: 'Kubernetes', icon: '⛵', description: 'Container Orchestration' },
-    { name: 'Jenkins', icon: '🤖', description: 'CI/CD Automation' },
-    { name: 'GitHub Actions', icon: '⚡', description: 'Workflow Automation' },
-  ]
+    {
+      name: 'AWS',
+      icon: (
+        <svg width="50" height="50" viewBox="0 0 40 40" fill="none"><ellipse cx="20" cy="20" rx="18" ry="14" fill="#232F3E"/><path d="M13 25c2 2 8 2 10 0" stroke="#FF9900" strokeWidth="2" strokeLinecap="round"/><ellipse cx="20" cy="18" rx="7" ry="5" fill="#FF9900"/></svg>
+      ),
+      description: 'Cloud Infrastructure',
+    },
+    {
+      name: 'Kubernetes',
+      icon: (
+        <svg width="50" height="50" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="#326CE5"/><path d="M20 10v20M10 20h20" stroke="#fff" strokeWidth="2"/><circle cx="20" cy="20" r="4" fill="#fff"/></svg>
+      ),
+      description: 'Container Orchestration',
+    },
+    {
+      name: 'Jenkins',
+      icon: (
+        <svg width="50" height="50" viewBox="0 0 40 40" fill="none"><ellipse cx="20" cy="20" rx="18" ry="14" fill="#D24939"/><circle cx="20" cy="20" r="6" fill="#fff"/><ellipse cx="20" cy="28" rx="8" ry="3" fill="#fff"/></svg>
+      ),
+      description: 'CI/CD Automation',
+    },
+    {
+      name: 'GitHub Actions',
+      icon: (
+        <svg width="50" height="50" viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="32" height="32" rx="8" fill="#24292F"/><circle cx="28" cy="28" r="4" fill="#2EA44F"/><rect x="12" y="12" width="16" height="4" rx="2" fill="#fff"/></svg>
+      ),
+      description: 'Workflow Automation',
+    },
+  ];
 
   return (
     <section className="px-6 py-16 bg-slate-950">
@@ -23,11 +47,11 @@ export default function Expertise() {
           {technologies.map((tech) => (
             <div
               key={tech.name}
-              className="bg-slate-800/50 rounded-lg p-6 text-center border border-slate-700 hover:border-blue-500 transition"
+              className="bg-gradient-to-br from-slate-800 to-blue-900 rounded-lg p-6 text-center border border-blue-700 hover:border-blue-400 transition shadow-lg"
             >
-              <div className="text-5xl mb-4">{tech.icon}</div>
-              <h3 className="text-lg font-semibold text-slate-100 mb-2">{tech.name}</h3>
-              <p className="text-sm text-slate-400">{tech.description}</p>
+              <div className="flex justify-center mb-4">{tech.icon}</div>
+              <h3 className="text-lg font-semibold text-blue-100 mb-2">{tech.name}</h3>
+              <p className="text-sm text-blue-200">{tech.description}</p>
             </div>
           ))}
         </div>

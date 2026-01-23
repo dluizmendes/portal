@@ -13,8 +13,9 @@ const EDUCATION = [
   },
 ]
 
+// ...existing code...
 const CERTIFICATIONS = [
-  { title: 'CNPA: Certified Cloud Native Platform Engineering Associate', issuer: 'CNCF', year: 'Active' },
+  { title: 'CNPA: Certified Cloud Native Platform Engineering Associate', issuer: 'CNCF', year: '2025' },
   { title: 'AWS Solutions Architect, Associate', issuer: 'AWS', year: '2022' },
   { title: 'AWS Cloud Practitioner', issuer: 'AWS', year: '2022' },
   { title: 'Certified Kubernetes Administrator (CKA)', issuer: 'CNCF', year: '2021' },
@@ -43,13 +44,13 @@ export default function Education() {
         </div>
 
         <div>
-          <h3 className="text-2xl font-semibold text-slate-100 mb-6">🏆 Certifications</h3>
+          <h3 className="text-2xl font-semibold text-blue-100 mb-6">🏆 Certifications</h3>
           <div className="grid md:grid-cols-2 gap-6">
             {CERTIFICATIONS.map((cert, idx) => (
-              <div key={idx} className="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
-                <p className="text-green-400 text-sm uppercase tracking-wide mb-2">{cert.year}</p>
-                <h4 className="text-lg font-semibold text-slate-100 mb-2">{cert.title}</h4>
-                <p className="text-slate-400 text-sm">{cert.issuer}</p>
+              <div key={idx} className="bg-gradient-to-br from-blue-900/80 to-slate-900 rounded-lg p-6 border border-blue-700 shadow-lg">
+                <p className="text-blue-200 text-sm uppercase tracking-wide mb-2 font-bold">{cert.year}</p>
+                <h4 className="text-lg font-semibold text-blue-100 mb-2">{cert.title}</h4>
+                <p className="text-blue-200 text-sm">{cert.issuer}</p>
               </div>
             ))}
           </div>
