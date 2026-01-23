@@ -10,10 +10,7 @@ export default function Certifications() {
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Certification Badge */}
             <div className="flex-shrink-0 text-center">
-              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" className="mx-auto mb-4">
-                <circle cx="32" cy="32" r="30" fill="#2563eb" stroke="#fff" strokeWidth="4"/>
-                <path d="M32 18l7 14h-14l7-14zm0 28a4 4 0 100-8 4 4 0 000 8z" fill="#fff"/>
-              </svg>
+              <img src="/cnpa-badge.png" alt="CNPA Badge" className="mx-auto mb-4 w-24 h-24 object-contain" />
               <p className="text-sm text-blue-200 font-semibold">CNCF Credential</p>
               <span className="inline-block mt-1 px-2 py-0.5 text-xs rounded bg-blue-700 text-blue-100 font-bold">2025</span>
             </div>
