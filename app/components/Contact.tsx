@@ -19,7 +19,7 @@ export default function Contact() {
             Send Email
           </a>
           <a
-            href="https://linkedin.com/in/douglasmendes"
+            href="https://www.linkedin.com/in/mendesdouglas/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-3 border border-slate-600 text-slate-300 rounded hover:border-slate-400 transition"
