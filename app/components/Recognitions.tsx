@@ -15,7 +15,7 @@ export default function Recognitions() {
               />
             </div>
             <div className="flex-1">
-              <p className="text-blue-200 text-sm uppercase tracking-wide mb-2 font-bold">Observability Day 2024</p>
+              <p className="text-blue-200 text-sm uppercase tracking-wide mb-2 font-bold">Observability Day 2025</p>
               <h3 className="text-2xl font-semibold text-blue-100 mb-4">Choice of the Day Award</h3>
               <p className="text-blue-200 leading-relaxed">
                 Last year, I led the Datadog implementation for the Beyond Banking platform, with a strong focus on Itaú Shop 2.0. This work earned first place at Itaú’s Observability Day as the “Choice of the Day,” recognized for its impactful use cases and observability excellence.

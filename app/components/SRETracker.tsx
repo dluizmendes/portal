@@ -122,7 +122,7 @@ const SEED_DATA: DecommissionItem[] = [
     cost: 600,
     deadline: '2026-01-22',
     status: 'nao-iniciado',
-    desc: 'Preparando limpeza de dados antigos. Validação de espaço necessária.',
+    desc: 'Preparing cleanup of legacy data. Validation of required space.', 
     update: '2026-01-05',
   },
   {

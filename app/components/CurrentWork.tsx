@@ -3,12 +3,12 @@
 const FOCUS_ITEMS = [
   {
     status: 'current',
-    title: 'Ensuring reliability at Itaú',
+    title: 'Building reliability at Itaú',
     icon: '🎯',
   },
   {
     status: 'completed',
-    title: 'Ensured end-to-end observability using Datadog',
+    title: 'Implemented end-to-end observability using Datadog',
     icon: '✓',
   },
   {
