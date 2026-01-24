@@ -22,6 +22,11 @@ export default function Expertise() {
       icon: '/github-logo.png',
       description: 'Workflow Automation',
     },
+    {
+      name: 'Terraform',
+      icon: '/terraform-logo.png',
+      description: 'Infrastructure as Code',
+    },
   ];
 
   return (
@@ -35,7 +40,7 @@ export default function Expertise() {
           infrastructure, containerization, and automation.
         </p>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {technologies.map((tech) => (
             <div
               key={tech.name}

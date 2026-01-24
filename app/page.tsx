@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Expertise from './components/Expertise'
 import Certifications from './components/Certifications'
 import CurrentWork from './components/CurrentWork'
+import Recognitions from './components/Recognitions'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
 import Education from './components/Education'
@@ -16,6 +17,7 @@ export default function Home() {
       <Expertise />
       <Certifications />
       <CurrentWork />
+      <Recognitions />
       <Experience />
       <Skills />
       <Education />

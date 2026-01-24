@@ -16,7 +16,7 @@ const SKILLS = {
   ],
   'CI/CD & Automation': [
     { name: 'Jenkins', level: 4, icon: '🤖' },
-    { name: 'GitLab CI', level: 4, icon: '🔄' },
+    { name: 'GitHub Actions', level: 4, icon: '🔄' },
     { name: 'Azure DevOps', level: 3, icon: '🔄' },
     { name: 'Shell', level: 5, icon: '💻' },
     { name: 'PowerShell', level: 3, icon: '💻' },
@@ -32,7 +32,7 @@ const SKILLS = {
   ],
   'Reliability & Operations': [
     { name: 'SRE practices', level: 5, icon: '🎯' },
-    { name: 'SLOs/SLIs', level: 5, icon: '📊' },
+    { name: 'SLAs/SLOs/SLIs', level: 5, icon: '📊' },
     { name: 'Incident Response', level: 4, icon: '🚑' },
     { name: 'Runbooks', level: 4, icon: '📖' },
     { name: 'Chaos Engineering', level: 3, icon: '⚡' },
