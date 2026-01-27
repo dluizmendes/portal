@@ -8,15 +8,12 @@ const handler = NextAuth({
       clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
-  callbacks: {
-    async signIn({ user, account, profile }) {
-      // Opcional: restrinja a apenas seu email
-      // if (user.email !== 'seu-email@exemplo.com') {
-      //   return false
-      // }
-      return true
-    },
-  },
+  // Descomente para restringir acesso apenas ao seu email:
+  // callbacks: {
+  //   async signIn({ user }) {
+  //     return user.email === 'seu-email@exemplo.com'
+  //   },
+  // },
 })
 
 export { handler as GET, handler as POST }
