@@ -10,8 +10,6 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import CommandPaletteHint from './components/CommandPaletteHint'
 import InteractiveTerminal from './components/InteractiveTerminal'
-import AnalyticsSection from './components/AnalyticsSection'
-import GithubActivity from './components/GithubActivity'
 import Reveal from './components/Reveal'
 
 export default function Home() {
@@ -27,10 +25,8 @@ export default function Home() {
       <Reveal delay={180}><Recognitions /></Reveal>
       <Reveal delay={200}><Experience /></Reveal>
       <Reveal delay={220}><Skills /></Reveal>
-      <Reveal delay={240}><AnalyticsSection /></Reveal>
-      <Reveal delay={260}><GithubActivity /></Reveal>
-      <Reveal delay={280}><Education /></Reveal>
-      <Reveal delay={300}><Contact /></Reveal>
+      <Reveal delay={240}><Education /></Reveal>
+      <Reveal delay={260}><Contact /></Reveal>
       <footer className="border-t border-slate-800 bg-slate-950">
         <div className="max-w-5xl mx-auto px-6 py-8 text-center text-sm text-slate-500">
           <p>Built with Next.js and Tailwind CSS</p>

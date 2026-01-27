@@ -4,11 +4,10 @@ import { useEffect, useState } from 'react'
 import { Github, Loader2 } from 'lucide-react'
 
 type Event = {
-  type: 'push' | 'create' | string
+  type: 'push' | string
   repo?: string
   time?: string
   commits?: string[]
-  ref?: string
 }
 
 type Response = {
@@ -62,21 +61,16 @@ export default function GithubActivity() {
           <div className="space-y-3">
             {data.events.map((ev, idx) => (
               <div key={idx} className="border border-slate-800 rounded-lg p-4 bg-slate-950/60">
-                <p className="text-slate-100 text-sm font-semibold">
-                  {ev.type === 'push' && 'Push'}
-                  {ev.type === 'create' && 'Create'}
-                  {ev.type !== 'push' && ev.type !== 'create' && ev.type}
-                </p>
+                <p className="text-slate-100 text-sm font-semibold">Push</p>
                 <p className="text-slate-300 text-sm">{ev.repo}</p>
                 <p className="text-slate-500 text-xs mb-2">{formatDate(ev.time)}</p>
                 {ev.commits && ev.commits.length > 0 && (
                   <ul className="text-xs text-slate-300 space-y-1">
-                    {ev.commits.map((c, i) => (
+                    {ev.commits.slice(0, 3).map((c, i) => (
                       <li key={i}>• {c}</li>
                     ))}
                   </ul>
                 )}
-                {ev.ref && <p className="text-xs text-slate-400">Ref: {ev.ref}</p>}
               </div>
             ))}
           </div>

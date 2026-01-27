@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { LogIn, LogOut, Search } from 'lucide-react'
-import ThemeToggleButton from './ThemeToggleButton'
 import { useCommandPalette } from './CommandPaletteProvider'
 
 export default function Header() {
@@ -44,7 +43,6 @@ export default function Header() {
               </Link>
             </>
           )}
-          <ThemeToggleButton />
           {session ? (
             <button
               onClick={() => signOut()}

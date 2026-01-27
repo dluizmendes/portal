@@ -21,6 +21,10 @@ const data = [
 export default function RadarChartSkills() {
   return (
     <div className="w-full h-80 bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+      <p className="text-sm text-slate-300 mb-3 leading-relaxed">
+        Perfil focado em confiabilidade e plataformas cloud-native: Kubernetes e IaC como base,
+        práticas SRE com SLOs/SLIs, automação de CI/CD e observabilidade completa.
+      </p>
       <ResponsiveContainer>
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
           <PolarGrid stroke="#334155" />

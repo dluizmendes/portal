@@ -7,20 +7,14 @@ html {
 }
 
 :root {
-  color-scheme: light;
-  background-color: #f8fafc;
-  color: #0f172a;
-}
-
-.dark {
   color-scheme: dark;
   background-color: #0f172a;
   color: #e2e8f0;
 }
 
 body {
-  background-color: inherit;
-  color: inherit;
+  background-color: #0f172a;
+  color: #e2e8f0;
 }
 
 a {

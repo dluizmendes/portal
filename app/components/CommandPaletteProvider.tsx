@@ -11,10 +11,11 @@ const commands = [
   { label: 'Experience', action: '#experience' },
   { label: 'Education', action: '#education' },
   { label: 'Contact', action: '#contact' },
-  { label: 'Dashboard', action: '/dash' },
-  { label: 'Interview Notes', action: '/interview-notes' },
   { label: 'Skills', action: '#skills' },
   { label: 'Projects', action: '#projects' },
+  { label: 'Dashboard', action: '/dash' },
+  { label: 'Interview Notes', action: '/interview-notes' },
+  { label: 'Insights (private)', action: '/dash/insights' },
 ]
 
 type CommandPaletteContextValue = {

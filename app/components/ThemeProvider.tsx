@@ -17,19 +17,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark')
 
   useEffect(() => {
-    const stored = (typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY)) as Theme | null
-    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches
-    const initial = stored ?? (prefersDark ? 'dark' : 'light')
-    setTheme(initial)
-    document.documentElement.classList.toggle('dark', initial === 'dark')
+    document.documentElement.classList.add('dark')
+    setTheme('dark')
+    localStorage.setItem(STORAGE_KEY, 'dark')
   }, [])
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem(STORAGE_KEY, theme)
-  }, [theme])
-
-  const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+  const toggleTheme = () => setTheme('dark') // no-op to keep API stable
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
