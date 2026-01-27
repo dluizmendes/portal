@@ -8,6 +8,10 @@ const handler = NextAuth({
       clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
+  pages: {
+    signIn: '/auth/signin',
+    error: '/auth/error',
+  },
   callbacks: {
     async signIn({ user }) {
       const allowedEmail = process.env.ALLOWED_EMAIL
