@@ -28,6 +28,7 @@ const CommandPaletteContext = createContext<CommandPaletteContextValue | undefin
 export function CommandPaletteProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
+  const [selectedIdx, setSelectedIdx] = useState(0)
   const router = useRouter()
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
         setOpen((prev) => !prev)
+        setSelectedIdx(0)
       }
       if (e.key === 'Escape') setOpen(false)
     }
@@ -46,6 +48,23 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
     if (!query) return commands
     return commands.filter((cmd) => cmd.label.toLowerCase().includes(query.toLowerCase()))
   }, [query])
+
+  useEffect(() => {
+    setSelectedIdx(0)
+  }, [query])
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      setSelectedIdx((prev) => (prev + 1) % filtered.length)
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      setSelectedIdx((prev) => (prev - 1 + filtered.length) % filtered.length)
+    } else if (e.key === 'Enter' && filtered.length > 0) {
+      e.preventDefault()
+      go(filtered[selectedIdx].action)
+    }
+  }
 
   const go = (action: string) => {
     setOpen(false)
@@ -67,6 +86,7 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
                 autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
                 placeholder="Buscar ou ir para..."
                 className="w-full bg-transparent outline-none text-sm placeholder:text-slate-500"
               />
@@ -75,11 +95,15 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
               </button>
             </div>
             <div className="max-h-64 overflow-y-auto">
-              {filtered.map((cmd) => (
+              {filtered.map((cmd, idx) => (
                 <button
                   key={cmd.label}
                   onClick={() => go(cmd.action)}
-                  className="w-full text-left px-4 py-3 hover:bg-slate-800 text-sm flex justify-between items-center"
+                  className={`w-full text-left px-4 py-3 text-sm flex justify-between items-center transition ${
+                    idx === selectedIdx
+                      ? 'bg-emerald-600/30 border-l-2 border-emerald-400'
+                      : 'hover:bg-slate-800'
+                  }`}
                 >
                   <span>{cmd.label}</span>
                   <span className="text-[11px] text-slate-500">{cmd.action}</span>
@@ -93,6 +117,9 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
               <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">⌘</kbd>
               <span>+</span>
               <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">K</kbd>
+              <span className="mx-1">•</span>
+              <span>↑↓ para navegar</span>
+              <span className="mx-1">•</span>
               <span className="ml-auto text-slate-600">Esc para fechar</span>
             </div>
           </div>
