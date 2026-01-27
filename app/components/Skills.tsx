@@ -1,5 +1,9 @@
 "use client"
 
+import dynamic from 'next/dynamic'
+
+const RadarChartSkills = dynamic(() => import('./RadarChartSkills'), { ssr: false })
+
 const SKILLS = {
   'Cloud & Platforms': [
     { name: 'AWS (EKS, ECS, EC2, IAM, S3, Lambda, API Gateway)', level: 5, icon: '☁️' },
@@ -51,27 +55,33 @@ function SkillRating({ level }: { level: number }) {
 
 export default function Skills() {
   return (
-    <section className="px-6 py-16 bg-slate-950">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-100 mb-12">⚙️ Skills & Expertise</h2>
-        <div className="space-y-8">
-          {Object.entries(SKILLS).map(([category, items]) => (
-            <div key={category}>
-              <h3 className="text-xl font-semibold text-slate-100 mb-4">{category}</h3>
-              <div className="flex flex-wrap gap-3">
-                {items.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="px-4 py-3 bg-slate-800 text-slate-300 rounded border border-slate-700 text-sm hover:border-blue-500 transition flex items-center"
-                  >
-                    <span className="mr-2 text-lg">{skill.icon}</span>
-                    <span>{skill.name}</span>
-                    <SkillRating level={skill.level} />
-                  </div>
-                ))}
+    <section id="skills" className="px-6 py-16 bg-slate-50 dark:bg-slate-950">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-12">⚙️ Skills & Expertise</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-2 space-y-8">
+            {Object.entries(SKILLS).map(([category, items]) => (
+              <div key={category}>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">{category}</h3>
+                <div className="flex flex-wrap gap-3">
+                  {items.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="px-4 py-3 bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-300 rounded border border-slate-300 dark:border-slate-700 text-sm hover:border-blue-500 transition flex items-center"
+                    >
+                      <span className="mr-2 text-lg">{skill.icon}</span>
+                      <span>{skill.name}</span>
+                      <SkillRating level={skill.level} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="md:col-span-1">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-3">Skill Radar</h3>
+            <RadarChartSkills />
+          </div>
         </div>
       </div>
     </section>

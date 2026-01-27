@@ -13,6 +13,8 @@ const commands = [
   { label: 'Contact', action: '#contact' },
   { label: 'Dashboard', action: '/dash' },
   { label: 'Interview Notes', action: '/interview-notes' },
+  { label: 'Skills', action: '#skills' },
+  { label: 'Projects', action: '#projects' },
 ]
 
 type CommandPaletteContextValue = {

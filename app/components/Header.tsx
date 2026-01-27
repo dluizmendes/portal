@@ -1,13 +1,12 @@
 "use client"
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { LogIn, LogOut, Sun, Moon, Search } from 'lucide-react'
-import { useTheme } from './ThemeProvider'
+import { LogIn, LogOut, Search } from 'lucide-react'
+import ThemeToggleButton from './ThemeToggleButton'
 import { useCommandPalette } from './CommandPaletteProvider'
 
 export default function Header() {
   const { data: session } = useSession()
-  const { theme, toggleTheme } = useTheme()
   const { setOpen: openPalette } = useCommandPalette()
   
   const navItems = [
@@ -45,14 +44,7 @@ export default function Header() {
               </Link>
             </>
           )}
-          <button
-            onClick={toggleTheme}
-            className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200"
-            title="Alternar tema"
-          >
-            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            <span className="hidden md:inline">Tema</span>
-          </button>
+          <ThemeToggleButton />
           {session ? (
             <button
               onClick={() => signOut()}
