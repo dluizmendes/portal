@@ -38,6 +38,9 @@ export default function Header() {
               <Link href="/dash" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
                 Dashboard
               </Link>
+              <Link href="/dash/insights" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
+                Insights
+              </Link>
               <Link href="/interview-notes" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
                 Interview Notes
               </Link>

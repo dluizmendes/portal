@@ -59,9 +59,11 @@ export default function InteractiveTerminal() {
   const [history, setHistory] = useState<string[]>(['Type "help" to see available commands.'])
   const [input, setInput] = useState('')
   const bottomRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'instant' })
+    const c = containerRef.current
+    if (c) c.scrollTop = c.scrollHeight
   }, [history])
 
   const onSubmit = (e: React.FormEvent) => {
@@ -85,14 +87,16 @@ export default function InteractiveTerminal() {
           <span className="w-3 h-3 rounded-full bg-emerald-500" />
           <span className="ml-3 text-sm text-slate-400">Interactive Terminal</span>
         </div>
-        <div className="p-4 font-mono text-sm text-slate-100 space-y-1 min-h-[260px] max-h-[360px] bg-slate-950 overflow-y-auto">
+        <div
+          ref={containerRef}
+          className="p-4 font-mono text-sm text-slate-100 space-y-1 min-h-[260px] max-h-[320px] md:max-h-[380px] bg-slate-950 overflow-y-auto"
+        >
           {history.map((line, idx) => (
             <div key={idx} className="whitespace-pre-wrap">{line}</div>
           ))}
           <form onSubmit={onSubmit} className="flex items-center gap-2">
             <span className="text-emerald-400">{PROMPT}</span>
             <input
-              autoFocus
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className="flex-1 bg-transparent outline-none text-slate-100"
