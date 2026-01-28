@@ -58,14 +58,16 @@ export default function Skills() {
   const { t } = useLocale()
 
   // Map category keys to translation keys
-  const categoryMap: { [key: string]: string } = {
+  const categoryMap = {
     'Cloud & Platforms': 'skillCloud',
     'Containers & Orchestration': 'skillContainers',
     'Infrastructure as Code': 'skillIaC',
     'CI/CD & Automation': 'skillCICD',
     'Observability & Incident Management': 'skillObservability',
     'Reliability & Operations': 'skillReliability',
-  }
+  } as const
+
+  type CategoryKey = keyof typeof categoryMap
 
   return (
     <section id="skills" className="px-6 py-16 bg-slate-50 dark:bg-slate-950">
@@ -76,7 +78,7 @@ export default function Skills() {
             {Object.entries(SKILLS_DATA).map(([category, items]) => (
               <div key={category}>
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
-                  {t(categoryMap[category])}
+                  {t(categoryMap[category as CategoryKey])}
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {items.map((skill) => (
