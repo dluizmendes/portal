@@ -25,7 +25,7 @@ export default function Certifications() {
                 Kubernetes, and modern containerized infrastructure practices.
               </p>
               <a
-                href="https://www.credly.com/earner/earned/badge/9ed701ca-54d0-4ba6-ba85-415071ff2c39"
+                href="https://www.credly.com/badges/9ed701ca-54d0-4ba6-ba85-415071ff2c39/public_url"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-sm font-medium shadow"
