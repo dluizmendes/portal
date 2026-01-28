@@ -18,7 +18,17 @@ export default function AnalyticsSection() {
       <div className="max-w-5xl mx-auto">
         <div className="mb-6">
           <p className="text-xs uppercase tracking-wide text-slate-500">Insights</p>
-          <h2 className="text-2xl font-bold text-slate-100">{t('analyticsTitle')}</h2>
+          <div className="flex flex-wrap items-center gap-3">
+            <h2 className="text-2xl font-bold text-slate-100">{t('analyticsTitle')}</h2>
+            <a
+              href="https://vercel.com/analytics"
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs px-2 py-1 rounded-full border border-emerald-500/40 text-emerald-300 bg-emerald-500/10"
+            >
+              Vercel Analytics
+            </a>
+          </div>
           <p className="text-sm text-slate-500">{t('analyticsDesc')}</p>
         </div>
         <div className="grid md:grid-cols-4 gap-4 mb-8">

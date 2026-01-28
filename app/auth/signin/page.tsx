@@ -26,7 +26,7 @@ export default function SignInPage() {
           {/* Login Button */}
           <button
             onClick={() => signIn('github', { callbackUrl: '/dash' })}
-            className="w-full flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 text-slate-100 px-6 py-3 rounded-lg transition font-medium border border-slate-700 hover:border-slate-600"
+            className="w-full flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 text-slate-100 px-6 py-3 rounded-lg transition-all duration-200 font-medium border border-slate-700 hover:border-slate-600 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg hover:shadow-emerald-500/10"
           >
             <Github className="w-5 h-5" />
             Entrar com GitHub
@@ -40,7 +40,7 @@ export default function SignInPage() {
 
         {/* Back to home */}
         <div className="text-center mt-6">
-          <a href="/" className="text-sm text-slate-400 hover:text-slate-300 transition">
+          <a href="/" className="text-sm text-slate-400 hover:text-slate-300 transition-transform duration-200 hover:-translate-y-0.5 inline-flex">
             ← Voltar para o início
           </a>
         </div>

@@ -23,13 +23,17 @@ export default function Header() {
         <Link href="/" className="text-lg font-semibold text-slate-200">Douglas Mendes</Link>
         <nav className="flex gap-3 md:gap-6 text-xs md:text-sm flex-wrap items-center">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="text-slate-400 hover:text-slate-200 transition">
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-slate-400 hover:text-slate-200 transition-transform duration-200 hover:-translate-y-0.5"
+            >
               {item.label}
             </a>
           ))}
           <button
             onClick={() => openPalette(true)}
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition-all duration-200 text-slate-200 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg hover:shadow-emerald-500/10"
             title="Command Palette (Cmd/Ctrl + K)"
           >
             <Search className="w-4 h-4" />
@@ -37,7 +41,7 @@ export default function Header() {
           </button>
           <button
             onClick={() => setLocale(locale === 'en' ? 'pt-BR' : 'en')}
-            className="flex items-center gap-1.5 px-2 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200 text-sm"
+            className="flex items-center gap-1.5 px-2 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition-all duration-200 text-slate-200 text-sm hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg hover:shadow-emerald-500/10"
             title={locale === 'en' ? 'Português' : 'English'}
           >
             {locale === 'en' ? '🇺🇸' : '🇧🇷'}
@@ -59,7 +63,7 @@ export default function Header() {
           {session ? (
             <button
               onClick={() => signOut()}
-              className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200"
+              className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition-all duration-200 text-slate-200 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg hover:shadow-emerald-500/10"
             >
               <LogOut className="w-4 h-4" />
               <span className="hidden md:inline">{t('logout')}</span>
@@ -67,7 +71,7 @@ export default function Header() {
           ) : (
             <button
               onClick={() => signIn('github')}
-              className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200"
+              className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition-all duration-200 text-slate-200 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg hover:shadow-emerald-500/10"
             >
               <LogIn className="w-4 h-4" />
               <span className="hidden md:inline">{t('login')}</span>

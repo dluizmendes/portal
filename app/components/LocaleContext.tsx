@@ -59,9 +59,9 @@ const translations = {
     expertiseDesc: 'Deep hands-on experience with industry-leading technologies for cloud-native infrastructure, containerization, and automation.',
 
     // Analytics
-    analyticsTitle: 'Portfolio Analytics (mock)',
-    analyticsDesc: 'Use as placeholder; can connect Vercel Analytics later.',
-    analyticsPageviews: 'Pageviews (30d)',
+    analyticsTitle: 'Portfolio Analytics',
+    analyticsDesc: 'Powered by Vercel Analytics for real visitor insights.',
+    analyticsPageviews: 'Visitors (30d)',
     analyticsAvgTime: 'Avg time on page',
     analyticsBounceRate: 'Bounce rate',
     analyticsTopGeo: 'Top geo',
@@ -133,9 +133,9 @@ const translations = {
     expertiseDesc: 'Experiência prática profunda com tecnologias líderes da indústria para infraestrutura cloud-native, containerização e automação.',
 
     // Analytics
-    analyticsTitle: 'Portfolio Analytics (mockado)',
-    analyticsDesc: 'Use como placeholder; pode conectar Vercel Analytics depois.',
-    analyticsPageviews: 'Pageviews (30d)',
+    analyticsTitle: 'Portfolio Analytics',
+    analyticsDesc: 'Powered by Vercel Analytics para métricas reais de visitantes.',
+    analyticsPageviews: 'Visitantes (30d)',
     analyticsAvgTime: 'Tempo médio na página',
     analyticsBounceRate: 'Taxa de rejeição',
     analyticsTopGeo: 'Geo principal',

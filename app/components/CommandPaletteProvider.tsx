@@ -90,7 +90,10 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
                 placeholder="Buscar ou ir para..."
                 className="w-full bg-transparent outline-none text-sm placeholder:text-slate-500"
               />
-              <button onClick={() => setOpen(false)} className="text-slate-500 hover:text-slate-200">
+              <button
+                onClick={() => setOpen(false)}
+                className="text-slate-500 hover:text-slate-200 transition-transform duration-200 hover:scale-105"
+              >
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -99,7 +102,7 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
                 <button
                   key={cmd.label}
                   onClick={() => go(cmd.action)}
-                  className={`w-full text-left px-4 py-3 text-sm flex justify-between items-center transition ${
+                  className={`w-full text-left px-4 py-3 text-sm flex justify-between items-center transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${
                     idx === selectedIdx
                       ? 'bg-emerald-600/30 border-l-2 border-emerald-400'
                       : 'hover:bg-slate-800'
