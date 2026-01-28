@@ -77,6 +77,7 @@ const translations = {
     // Other
     footerBuilt: 'Built with Next.js and Tailwind CSS',
     footerDeveloped: 'Developed and deployed with GitHub Actions',
+    footerCredit: 'Crafted with you and Claude Code',
   },
   'pt-BR': {
     // Header & Nav
@@ -146,10 +147,10 @@ const translations = {
     githubError: 'Falha ao carregar atividade',
     githubNone: 'Nenhuma atividade recente.',
     githubPush: 'Push',
-
     // Other
     footerBuilt: 'Construído com Next.js e Tailwind CSS',
     footerDeveloped: 'Desenvolvido e deployado com GitHub Actions',
+    footerCredit: 'Criado com você e Claude Code',
   },
 }
 
