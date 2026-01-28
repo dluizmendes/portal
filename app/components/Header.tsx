@@ -56,6 +56,9 @@ export default function Header() {
               <Link href="/dash" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
                 {t('dashboard')}
               </Link>
+              <Link href="/dash/spending" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
+                {t('spending')}
+              </Link>
               <Link href="/dash/language" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
                 {t('language')}
               </Link>

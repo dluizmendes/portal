@@ -17,30 +17,65 @@ export default function SpendingPage() {
   const [description, setDescription] = useState('')
   const [spentBy, setSpentBy] = useState<'douglas' | 'tamires'>('douglas')
   const [isLoaded, setIsLoaded] = useState(false)
+  const [useDatabase, setUseDatabase] = useState(false)
 
   // Configuration
   const DOUGLAS_LIMIT = 1397
   const TAMIRES_LIMIT = 700
   const TOTAL_LIMIT = DOUGLAS_LIMIT + TAMIRES_LIMIT
 
-  // Load from localStorage
+  // Load expenses from API or localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('spending_expenses')
-    if (saved) {
-      try {
-        setExpenses(JSON.parse(saved))
-      } catch (e) {
-        console.error('Error loading expenses:', e)
+    const loadExpenses = async () => {
+      // Try to load from API first if Supabase is configured
+      if (
+        process.env.NEXT_PUBLIC_SUPABASE_URL &&
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      ) {
+        try {
+          const response = await fetch('/api/expenses')
+          if (response.ok) {
+            const data = await response.json()
+            const mappedExpenses = data.map((e: any) => ({
+              id: e.id,
+              amount: parseFloat(e.amount),
+              description: e.description || '',
+              spentBy: e.spent_by,
+              date: e.date,
+            }))
+            setExpenses(mappedExpenses)
+            setUseDatabase(true)
+            setIsLoaded(true)
+            return
+          }
+        } catch (error) {
+          console.warn('Supabase not available, falling back to localStorage:', error)
+        }
       }
+
+      // Fallback to localStorage
+      const saved = localStorage.getItem('spending_expenses')
+      if (saved) {
+        try {
+          setExpenses(JSON.parse(saved))
+        } catch (e) {
+          console.error('Error loading expenses:', e)
+        }
+      }
+      setIsLoaded(true)
     }
-    setIsLoaded(true)
+
+    if (isLoaded === false) {
+      loadExpenses()
+    }
   }, [])
 
-  // Save to localStorage
+  // Save to localStorage as fallback, and to database if enabled
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem('spending_expenses', JSON.stringify(expenses))
-    }
+    if (!isLoaded) return
+
+    // Always save to localStorage as backup
+    localStorage.setItem('spending_expenses', JSON.stringify(expenses))
   }, [expenses, isLoaded])
 
   // Calculate totals
@@ -58,7 +93,7 @@ export default function SpendingPage() {
   const tamiresRemaining = TAMIRES_LIMIT - tamiresTotal
 
   // Add expense
-  const handleAddExpense = (e: React.FormEvent) => {
+  const handleAddExpense = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!amount || !description) return
 
@@ -70,13 +105,61 @@ export default function SpendingPage() {
       date: new Date().toLocaleDateString('pt-BR'),
     }
 
+    // Try to save to database if available
+    if (useDatabase) {
+      try {
+        const response = await fetch('/api/expenses', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: newExpense.amount,
+            description: newExpense.description,
+            spent_by: newExpense.spentBy,
+            date: new Date().toISOString().split('T')[0],
+          }),
+        })
+        if (response.ok) {
+          const data = await response.json()
+          const expense: Expense = {
+            id: data.id,
+            amount: parseFloat(data.amount),
+            description: data.description,
+            spentBy: data.spent_by,
+            date: data.date,
+          }
+          setExpenses([expense, ...expenses])
+          setAmount('')
+          setDescription('')
+          return
+        }
+      } catch (error) {
+        console.error('Failed to save to database:', error)
+      }
+    }
+
+    // Fallback to localStorage
     setExpenses([newExpense, ...expenses])
     setAmount('')
     setDescription('')
   }
 
   // Delete expense
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
+    if (useDatabase) {
+      try {
+        const response = await fetch(`/api/expenses/${id}`, {
+          method: 'DELETE',
+        })
+        if (response.ok) {
+          setExpenses(expenses.filter((e) => e.id !== id))
+          return
+        }
+      } catch (error) {
+        console.error('Failed to delete from database:', error)
+      }
+    }
+
+    // Fallback to localStorage
     setExpenses(expenses.filter((e) => e.id !== id))
   }
 
