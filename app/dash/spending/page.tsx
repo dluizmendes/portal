@@ -27,30 +27,28 @@ export default function SpendingPage() {
   // Load expenses from API or localStorage
   useEffect(() => {
     const loadExpenses = async () => {
-      // Try to load from API first if Supabase is configured
-      if (
-        process.env.NEXT_PUBLIC_SUPABASE_URL &&
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-      ) {
-        try {
-          const response = await fetch('/api/expenses')
-          if (response.ok) {
-            const data = await response.json()
-            const mappedExpenses = data.map((e: any) => ({
-              id: e.id,
-              amount: parseFloat(e.amount),
-              description: e.description || '',
-              spentBy: e.spent_by,
-              date: e.date,
-            }))
-            setExpenses(mappedExpenses)
-            setUseDatabase(true)
-            setIsLoaded(true)
-            return
-          }
-        } catch (error) {
-          console.warn('Supabase not available, falling back to localStorage:', error)
+      // Always try to load from API first
+      try {
+        const response = await fetch('/api/expenses')
+        if (response.ok) {
+          const data = await response.json()
+          const mappedExpenses = data.map((e: any) => ({
+            id: e.id,
+            amount: parseFloat(e.amount),
+            description: e.description || '',
+            spentBy: e.spent_by,
+            date: e.date,
+          }))
+          setExpenses(mappedExpenses)
+          setUseDatabase(true)
+          setIsLoaded(true)
+          return
+        } else if (response.status === 503) {
+          // Database not configured, use localStorage
+          console.log('Database not configured, using localStorage')
         }
+      } catch (error) {
+        console.warn('API not available, falling back to localStorage:', error)
       }
 
       // Fallback to localStorage
