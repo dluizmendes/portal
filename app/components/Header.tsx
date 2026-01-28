@@ -119,19 +119,22 @@ export default function Header() {
               <Search className="w-4 h-4" />
               {t('command')}
             </button>
-            {session && (
-              <>
-                <Link href="/dash" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
-                  {t('dashboard')}
-                </Link>
-                <Link href="/dash/language" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
-                  {t('language')}
-                </Link>
-                <Link href="/interview-notes" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
-                  {t('interviewNotes')}
-                </Link>
-              </>
-            )}
+          {session && (
+            <>
+              <Link href="/dash" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
+                {t('dashboard')}
+              </Link>
+              <Link href="/dash/spending" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
+                {t('spending')}
+              </Link>
+              <Link href="/dash/language" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
+                {t('language')}
+              </Link>
+              <Link href="/interview-notes" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
+                {t('interviewNotes')}
+              </Link>
+            </>
+          )}
             {session ? (
               <button
                 onClick={() => { signOut(); closeMenu() }}
