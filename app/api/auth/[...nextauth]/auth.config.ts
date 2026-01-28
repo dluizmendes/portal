@@ -4,9 +4,9 @@ import type { NextAuthOptions } from "next-auth"
 
 // Emails permitidos para login
 const ALLOWED_EMAILS = [
-  process.env.ALLOWED_EMAIL,
-  'tamires.lunardelle@gmail.com',
-].filter(Boolean) as string[]
+  'dluizmendes@gmail.com',
+  'tamiresgsmendes@gmail.com',
+]
 
 const authOptions: NextAuthOptions = {
   providers: [
@@ -25,7 +25,7 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async signIn({ user }) {
-      if (ALLOWED_EMAILS.length === 0) return true
+      // Apenas esses emails específicos podem logar
       return ALLOWED_EMAILS.includes(user.email || '')
     },
   },
