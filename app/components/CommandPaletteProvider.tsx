@@ -15,7 +15,7 @@ const commands = [
   { label: 'Projects', action: '#projects' },
   { label: 'Dashboard', action: '/dash' },
   { label: 'Interview Notes', action: '/interview-notes' },
-  { label: 'Insights (private)', action: '/dash/insights' },
+  { label: 'Language (private)', action: '/dash/language' },
 ]
 
 type CommandPaletteContextValue = {
