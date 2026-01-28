@@ -1,7 +1,7 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
-import { Github, Lock } from 'lucide-react'
+import { Github, Lock, Mail } from 'lucide-react'
 
 export default function SignInPage() {
   return (
@@ -23,14 +23,24 @@ export default function SignInPage() {
             Esta página é privada. Faça login para continuar.
           </p>
 
-          {/* Login Button */}
-          <button
-            onClick={() => signIn('github', { callbackUrl: '/dash' })}
-            className="w-full flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 text-slate-100 px-6 py-3 rounded-lg transition-all duration-200 font-medium border border-slate-700 hover:border-slate-600 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg hover:shadow-emerald-500/10"
-          >
-            <Github className="w-5 h-5" />
-            Entrar com GitHub
-          </button>
+          {/* Login Buttons */}
+          <div className="space-y-3">
+            <button
+              onClick={() => signIn('github', { callbackUrl: '/dash' })}
+              className="w-full flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 text-slate-100 px-6 py-3 rounded-lg transition-all duration-200 font-medium border border-slate-700 hover:border-slate-600 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg hover:shadow-emerald-500/10"
+            >
+              <Github className="w-5 h-5" />
+              Entrar com GitHub
+            </button>
+
+            <button
+              onClick={() => signIn('google', { callbackUrl: '/dash' })}
+              className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-700 px-6 py-3 rounded-lg transition-all duration-200 font-medium border border-gray-300 hover:border-gray-400 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-lg"
+            >
+              <Mail className="w-5 h-5" />
+              Entrar com Google
+            </button>
+          </div>
 
           {/* Info */}
           <p className="text-xs text-slate-500 text-center mt-6">

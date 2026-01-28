@@ -396,13 +396,6 @@ export default function SpendingPage() {
             </div>
           )}
         </div>
-
-        {/* Info Footer */}
-        <div className="mt-8 p-4 bg-slate-800/50 border border-slate-700 rounded-lg text-center">
-          <p className="text-sm text-slate-400">
-            💾 Dados salvos localmente no seu navegador. Cada vez que alguém faz login neste navegador, verá o mesmo histórico.
-          </p>
-        </div>
       </div>
     </div>
   )
