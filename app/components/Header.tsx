@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react'
 import Link from 'next/link'
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 import { LogIn, LogOut, Search, Menu, X } from 'lucide-react'
 import { useCommandPalette } from './CommandPaletteProvider'
 import { useLocale } from './LocaleContext'
@@ -75,12 +75,12 @@ export default function Header() {
               <LogOut className="w-4 h-4" />
             </button>
           ) : (
-            <button
-              onClick={() => signIn('github')}
+            <Link 
+              href="/auth/signin"
               className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition-all duration-200 text-slate-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               <LogIn className="w-4 h-4" />
-            </button>
+            </Link>
           )}
         </nav>
 
@@ -147,13 +147,14 @@ export default function Header() {
                 {t('logout')}
               </button>
             ) : (
-              <button
-                onClick={() => { signIn('github'); closeMenu() }}
+              <Link
+                href="/auth/signin"
+                onClick={closeMenu}
                 className="flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200 text-left"
               >
                 <LogIn className="w-4 h-4" />
                 {t('login')}
-              </button>
+              </Link>
             )}
           </nav>
         </div>
