@@ -1,6 +1,10 @@
 "use client"
 
+import { useLocale } from './LocaleContext'
+
 export default function Expertise() {
+  const { t } = useLocale()
+
   const technologies = [
     {
       name: 'AWS',
@@ -33,11 +37,10 @@ export default function Expertise() {
     <section className="px-6 py-16 bg-slate-950">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-slate-100 mb-4 text-center">
-          🚀 Expertise in the Modern Ecosystem
+          {t('expertiseTitle')}
         </h2>
         <p className="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
-          Deep hands-on experience with industry-leading technologies for cloud-native 
-          infrastructure, containerization, and automation.
+          {t('expertiseDesc')}
         </p>
         
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6">

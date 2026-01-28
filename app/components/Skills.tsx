@@ -1,10 +1,11 @@
 "use client"
 
 import dynamic from 'next/dynamic'
+import { useLocale } from './LocaleContext'
 
 const RadarChartSkills = dynamic(() => import('./RadarChartSkills'), { ssr: false })
 
-const SKILLS = {
+const SKILLS_DATA = {
   'Cloud & Platforms': [
     { name: 'AWS (EKS, ECS, EC2, IAM, S3, Lambda, API Gateway)', level: 5, icon: '☁️' },
     { name: 'Azure', level: 2, icon: '☁️' },
@@ -54,15 +55,29 @@ function SkillRating({ level }: { level: number }) {
 }
 
 export default function Skills() {
+  const { t } = useLocale()
+
+  // Map category keys to translation keys
+  const categoryMap: { [key: string]: string } = {
+    'Cloud & Platforms': 'skillCloud',
+    'Containers & Orchestration': 'skillContainers',
+    'Infrastructure as Code': 'skillIaC',
+    'CI/CD & Automation': 'skillCICD',
+    'Observability & Incident Management': 'skillObservability',
+    'Reliability & Operations': 'skillReliability',
+  }
+
   return (
     <section id="skills" className="px-6 py-16 bg-slate-50 dark:bg-slate-950">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-12">⚙️ Skills & Expertise</h2>
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-12">{t('skillsTitle')}</h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2 space-y-8">
-            {Object.entries(SKILLS).map(([category, items]) => (
+            {Object.entries(SKILLS_DATA).map(([category, items]) => (
               <div key={category}>
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">{category}</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">
+                  {t(categoryMap[category])}
+                </h3>
                 <div className="flex flex-wrap gap-3">
                   {items.map((skill) => (
                     <div
@@ -79,7 +94,7 @@ export default function Skills() {
             ))}
           </div>
           <div className="md:col-span-1">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-3">Skill Radar</h3>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-3">{t('radarSkillLabel')}</h3>
             <RadarChartSkills />
           </div>
         </div>

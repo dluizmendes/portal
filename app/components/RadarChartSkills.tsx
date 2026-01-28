@@ -8,6 +8,7 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from 'recharts'
+import { useLocale } from './LocaleContext'
 
 const data = [
   { subject: 'Cloud', A: 90, fullMark: 100 },
@@ -19,11 +20,12 @@ const data = [
 ]
 
 export default function RadarChartSkills() {
+  const { t } = useLocale()
+  
   return (
-    <div className="w-full h-96 min-h-[420px] bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+    <div className="w-full h-96 min-h-[460px] bg-slate-900/60 border border-slate-800 rounded-xl p-5">
       <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-        Perfil focado em confiabilidade e plataformas cloud-native: Kubernetes e IaC como base,
-        práticas SRE com SLOs/SLIs, automação de CI/CD e observabilidade completa.
+        {t('radarProfile')}
       </p>
       <ResponsiveContainer>
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>

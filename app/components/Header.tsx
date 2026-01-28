@@ -3,16 +3,18 @@ import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { LogIn, LogOut, Search } from 'lucide-react'
 import { useCommandPalette } from './CommandPaletteProvider'
+import { useLocale } from './LocaleContext'
 
 export default function Header() {
   const { data: session } = useSession()
   const { setOpen: openPalette } = useCommandPalette()
+  const { locale, setLocale, t } = useLocale()
   
   const navItems = [
-    { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Education', href: '#education' },
-    { label: 'Contact', href: '#contact' },
+    { label: t('about'), href: '#about' },
+    { label: t('experience'), href: '#experience' },
+    { label: t('education'), href: '#education' },
+    { label: t('contact'), href: '#contact' },
   ]
 
   return (
@@ -31,18 +33,26 @@ export default function Header() {
             title="Command Palette (Cmd/Ctrl + K)"
           >
             <Search className="w-4 h-4" />
-            <span className="hidden md:inline">Command</span>
+            <span className="hidden md:inline">{t('command')}</span>
+          </button>
+          <button
+            onClick={() => setLocale(locale === 'en' ? 'pt-BR' : 'en')}
+            className="flex items-center gap-1.5 px-2 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200 text-sm"
+            title={locale === 'en' ? 'Português' : 'English'}
+          >
+            {locale === 'en' ? '🇺🇸' : '🇧🇷'}
+            <span className="hidden md:inline">{locale === 'en' ? 'EN' : 'PT'}</span>
           </button>
           {session && (
             <>
               <Link href="/dash" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
-                Dashboard
+                {t('dashboard')}
               </Link>
               <Link href="/dash/insights" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
-                Insights
+                {t('insights')}
               </Link>
               <Link href="/interview-notes" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
-                Interview Notes
+                {t('interviewNotes')}
               </Link>
             </>
           )}
@@ -52,7 +62,7 @@ export default function Header() {
               className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200"
             >
               <LogOut className="w-4 h-4" />
-              <span className="hidden md:inline">Sair</span>
+              <span className="hidden md:inline">{t('logout')}</span>
             </button>
           ) : (
             <button
@@ -60,7 +70,7 @@ export default function Header() {
               className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-md transition text-slate-200"
             >
               <LogIn className="w-4 h-4" />
-              <span className="hidden md:inline">Login</span>
+              <span className="hidden md:inline">{t('login')}</span>
             </button>
           )}
         </nav>

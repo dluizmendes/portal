@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Github, Loader2 } from 'lucide-react'
+import { useLocale } from './LocaleContext'
 
 type Event = {
   type: 'push' | string
@@ -22,6 +23,7 @@ function formatDate(iso?: string) {
 }
 
 export default function GithubActivity() {
+  const { t } = useLocale()
   const [data, setData] = useState<Response | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -35,7 +37,7 @@ export default function GithubActivity() {
       })
       .catch(() => {
         if (!active) return
-        setData({ events: [], error: 'Falha ao carregar atividade' })
+        setData({ events: [], error: t('githubError') })
       })
       .finally(() => active && setLoading(false))
     return () => {
@@ -48,12 +50,12 @@ export default function GithubActivity() {
       <div className="max-w-4xl mx-auto bg-slate-900/70 border border-slate-800 rounded-xl p-6 shadow">
         <div className="flex items-center gap-2 mb-4">
           <Github className="w-5 h-5 text-slate-200" />
-          <h3 className="text-lg font-semibold text-slate-100">GitHub Activity</h3>
+          <h3 className="text-lg font-semibold text-slate-100">{t('githubActivityTitle')}</h3>
         </div>
         {loading ? (
           <div className="flex items-center gap-2 text-slate-400 text-sm">
             <Loader2 className="w-4 h-4 animate-spin" />
-            Carregando atividade...
+            {t('githubLoading')}
           </div>
         ) : data?.error ? (
           <p className="text-sm text-red-400">{data.error}</p>
@@ -61,7 +63,7 @@ export default function GithubActivity() {
           <div className="space-y-3">
             {data.events.map((ev, idx) => (
               <div key={idx} className="border border-slate-800 rounded-lg p-4 bg-slate-950/60">
-                <p className="text-slate-100 text-sm font-semibold">Push</p>
+                <p className="text-slate-100 text-sm font-semibold">{t('githubPush')}</p>
                 <p className="text-slate-300 text-sm">{ev.repo}</p>
                 <p className="text-slate-500 text-xs mb-2">{formatDate(ev.time)}</p>
                 {ev.commits && ev.commits.length > 0 && (
@@ -75,7 +77,7 @@ export default function GithubActivity() {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-slate-400">Nenhuma atividade recente.</p>
+          <p className="text-sm text-slate-400">{t('githubNone')}</p>
         )}
       </div>
     </section>
