@@ -53,13 +53,10 @@ export default function Header() {
           </button>
           {session && (
             <>
-              <Link href="/dash" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
-                {t('dashboard')}
-              </Link>
-              <Link href="/dash/spending" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
+              <Link href="/spending" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
                 {t('spending')}
               </Link>
-              <Link href="/dash/language" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
+              <Link href="/language" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
                 {t('language')}
               </Link>
               <Link href="/interview-notes" className="text-emerald-400 hover:text-emerald-300 transition font-medium">
@@ -124,13 +121,10 @@ export default function Header() {
             </button>
           {session && (
             <>
-              <Link href="/dash" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
-                {t('dashboard')}
-              </Link>
-              <Link href="/dash/spending" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
+              <Link href="/spending" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
                 {t('spending')}
               </Link>
-              <Link href="/dash/language" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
+              <Link href="/language" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
                 {t('language')}
               </Link>
               <Link href="/interview-notes" onClick={closeMenu} className="text-emerald-400 hover:text-emerald-300 transition py-2">
