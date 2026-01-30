@@ -17,7 +17,6 @@ export async function GET() {
     const { data, error } = await supabase
       .from('expenses')
       .select('*')
-      .eq('user_email', session.user.email)
       .order('date', { ascending: false })
 
     if (error) throw error
