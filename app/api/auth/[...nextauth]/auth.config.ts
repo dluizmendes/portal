@@ -28,6 +28,11 @@ const authOptions: NextAuthOptions = {
       // Apenas esses emails específicos podem logar
       return ALLOWED_EMAILS.includes(user.email || '')
     },
+    async redirect({ url, baseUrl }) {
+      // Redirecionar para home após login
+      if (url.startsWith(baseUrl)) return url
+      return baseUrl
+    },
   },
 }
 

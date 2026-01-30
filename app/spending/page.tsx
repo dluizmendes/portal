@@ -43,12 +43,18 @@ export default function SpendingPage() {
           setUseDatabase(true)
           setIsLoaded(true)
           return
-        } else if (response.status === 503) {
-          // Database not configured, use localStorage
-          console.log('Database not configured, using localStorage')
+        } else if (response.status === 503 || response.status === 401) {
+          // Database not configured or unauthorized, use localStorage
+          console.log('Database not available, using localStorage:', response.status)
+          setUseDatabase(false)
+        } else {
+          const error = await response.text()
+          console.warn('API error:', response.status, error)
+          setUseDatabase(false)
         }
       } catch (error) {
         console.warn('API not available, falling back to localStorage:', error)
+        setUseDatabase(false)
       }
 
       // Fallback to localStorage
@@ -129,6 +135,9 @@ export default function SpendingPage() {
           setAmount('')
           setDescription('')
           return
+        } else {
+          const errorData = await response.text()
+          console.error('Failed to save to database:', response.status, errorData)
         }
       } catch (error) {
         console.error('Failed to save to database:', error)
