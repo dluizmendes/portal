@@ -4,8 +4,9 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Search, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
-const commands = [
+const PUBLIC_COMMANDS = [
   { label: 'Home', action: '/' },
   { label: 'About', action: '#about' },
   { label: 'Experience', action: '#experience' },
@@ -13,9 +14,12 @@ const commands = [
   { label: 'Contact', action: '#contact' },
   { label: 'Skills', action: '#skills' },
   { label: 'Projects', action: '#projects' },
-  { label: 'Dashboard', action: '/dash' },
-  { label: 'Spending (private)', action: '/dash/spending' },
-  { label: 'Language (private)', action: '/dash/language' },
+  { label: 'Learning', action: '#learning' },
+]
+
+const PRIVATE_COMMANDS = [
+  { label: 'Spending', action: '/spending' },
+  { label: 'Language', action: '/language' },
   { label: 'Interview Notes', action: '/interview-notes' },
 ]
 
@@ -31,6 +35,11 @@ export function CommandPaletteProvider({ children }: { children: React.ReactNode
   const [query, setQuery] = useState('')
   const [selectedIdx, setSelectedIdx] = useState(0)
   const router = useRouter()
+  const { data: session } = useSession()
+
+  const commands = useMemo(() => {
+    return session ? [...PUBLIC_COMMANDS, ...PRIVATE_COMMANDS] : PUBLIC_COMMANDS
+  }, [session])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
