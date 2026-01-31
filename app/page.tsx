@@ -7,6 +7,7 @@ import Recognitions from './components/Recognitions'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
 import Education from './components/Education'
+import WhatILearning from './components/WhatILearning'
 import Contact from './components/Contact'
 import CommandPaletteHint from './components/CommandPaletteHint'
 import InteractiveTerminal from './components/InteractiveTerminal'
@@ -18,16 +19,17 @@ export default function Home() {
     <>
       <Header />
       <CommandPaletteHint />
-      <Reveal><Hero /></Reveal>
-      <Reveal delay={80}><InteractiveTerminal /></Reveal>
-      <Reveal delay={120}><Expertise /></Reveal>
-      <Reveal delay={140}><Certifications /></Reveal>
-      <Reveal delay={160}><CurrentWork /></Reveal>
-      <Reveal delay={180}><Recognitions /></Reveal>
-      <Reveal delay={200}><Experience /></Reveal>
-      <Reveal delay={220}><Skills /></Reveal>
-      <Reveal delay={240}><Education /></Reveal>
-      <Reveal delay={260}><Contact /></Reveal>
+      <Reveal variant="depth"><Hero /></Reveal>
+      <Reveal delay={80} variant="left"><InteractiveTerminal /></Reveal>
+      <Reveal delay={120} variant="right"><Expertise /></Reveal>
+      <Reveal delay={140} variant="left"><Certifications /></Reveal>
+      <Reveal delay={160} variant="right"><CurrentWork /></Reveal>
+      <Reveal delay={180} variant="left"><Recognitions /></Reveal>
+      <Reveal delay={200} variant="right"><Experience /></Reveal>
+      <Reveal delay={220} variant="left"><Skills /></Reveal>
+      <Reveal delay={240} variant="right"><Education /></Reveal>
+      <Reveal delay={260} variant="left"><WhatILearning /></Reveal>
+      <Reveal delay={280} variant="scale"><Contact /></Reveal>
       <Footer />
     </>
   )

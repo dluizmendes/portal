@@ -1,4 +1,6 @@
-"use client"
+""use client"
+
+import { useParallax } from './useParallax'"
 
 const EXPERIENCES = [
   {
@@ -50,20 +52,34 @@ const EXPERIENCES = [
 ]
 
 export default function Experience() {
+  const parallaxRef = useParallax(0.3)
+
   return (
-    <section id="experience" className="px-6 py-16 bg-slate-950">
-      <div className="max-w-4xl mx-auto">
+    <section id="experience" className="px-6 py-16 bg-slate-950 relative overflow-hidden">
+      <div ref={parallaxRef} className="absolute inset-0 z-0">
+        <div className="absolute -left-32 top-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute -right-32 bottom-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
         <h2 className="text-3xl font-bold text-slate-100 mb-12">💼 Experience</h2>
         <div className="space-y-8">
           {EXPERIENCES.map((exp, idx) => (
-            <div key={idx} className="border-l-2 border-blue-500 pl-6">
-              <h3 className="text-xl font-semibold text-slate-100">{exp.title}</h3>
-              <p className="text-blue-400 text-sm mb-1">🏢 {exp.company}</p>
+            <div
+              key={idx}
+              className="border-l-2 border-blue-500 pl-6 transition-all duration-500 hover:border-cyan-400 hover:pl-8"
+              style={{
+                animation: `stagger-enter 0.6s ease-out`,
+                animationDelay: `${idx * 100}ms`,
+              }}
+            >
+              <h3 className="text-xl font-semibold text-slate-100 group hover:text-cyan-300 transition-colors">{exp.title}</h3>
+              <p className="text-blue-400 text-sm mb-1 group-hover:text-cyan-300 transition-colors">🏢 {exp.company}</p>
               <p className="text-slate-500 text-sm mb-4">{exp.period}</p>
               <ul className="space-y-2">
                 {exp.highlights.map((highlight, i) => (
-                  <li key={i} className="text-slate-300 flex items-start">
-                    <span className="text-blue-400 mr-3">•</span>
+                  <li key={i} className="text-slate-300 flex items-start hover:text-slate-100 transition-colors">
+                    <span className="text-blue-400 mr-3 group-hover:text-cyan-300 transition-colors">•</span>
                     <span>{highlight}</span>
                   </li>
                 ))}
@@ -74,4 +90,3 @@ export default function Experience() {
       </div>
     </section>
   )
-}
