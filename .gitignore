@@ -6,3 +6,7 @@ node_modules/
 .DS_Store
 *:Zone.Identifier
 out/
+
+# Local security audit - DO NOT COMMIT
+SECURITY_IMPROVEMENTS.md
+
