@@ -320,19 +320,6 @@ export default function WhatILearning() {
             <LearningCard key={path.id} path={path} />
           ))}
         </div>
-
-        {/* CTA */}
-        <div className="mt-12 p-6 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg text-white text-center">
-          <p className="mb-4">
-            💡 <strong>Want to discuss architecture or learning strategies?</strong>
-          </p>
-          <a
-            href="#contact"
-            className="inline-block px-6 py-2 bg-white text-blue-600 font-semibold rounded hover:bg-blue-50 transition"
-          >
-            Get in Touch
-          </a>
-        </div>
       </div>
     </section>
   )
