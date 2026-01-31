@@ -171,10 +171,10 @@ function LearningCard({ path }: { path: LearningPath }) {
   }
 
   return (
-    <dref={parallaxRef}
+    <div
+      ref={parallaxRef}
       className={`rounded-lg border-2 p-6 transition-all duration-300 elevate-on-hover parallax-card ${categoryColors[path.category]}`}
-      style={{ perspective: '1000px' }
-      className={`rounded-lg border-2 p-6 transition-all duration-300 elevate-on-hover ${categoryColors[path.category]}`}
+      style={{ perspective: '1000px' }}
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">

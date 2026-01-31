@@ -1,6 +1,6 @@
-""use client"
+'use client'
 
-import { useParallax } from './useParallax'"
+import { useParallax } from './useParallax'
 
 const EXPERIENCES = [
   {
@@ -89,4 +89,4 @@ export default function Experience() {
         </div>
       </div>
     </section>
-  )
+  )}
